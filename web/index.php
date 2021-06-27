@@ -61,8 +61,6 @@ section{
           <nav>
             <ul>
               <li class="nav-item">
-                <a href="/list"><li><h4>LISTA</h4></li></a>
-                <a href="/insert"><li><h4>INSERTAR</h4></li></a>
             </li>
             </ul>
           </nav>
@@ -71,7 +69,54 @@ section{
         <h1>BIENVENIDO</h1>
         <h2>Este es un formulario que tu debes de llenar</h2>
         <h3>Debes ser muy claro con los datos y los datos deben ser verdaderos</h3>
-        <img src="https://image.freepik.com/vector-gratis/plantilla-formulario-registro-diseno-plano_23-2147971970.jpg"
+        <!DOCTYPE html>
+<html lang="en">
+  
+  <body>
+    <!--Vista inicial-->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a href="#" class="navbar-brand">View Data</a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+    <!-- Page Content -->
+    <main role="main" class="container my-auto">
+      <br></br>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Primer Apellido</th>
+              <th scope="col">Segundo Apellido</th>
+              <th scope="col">Email</th>
+              <th scope="col">Teléfono</th>
+            </tr>
+          </thead>
+          <tbody>
+          <?php
+                $db = new SQLite3('agenda.db');
+                $results = $db->query('SELECT * FROM personas');
+
+                while ($row = $results->fetchArray()) { ?>
+                <tr>
+                <td> <?php echo $row['nombre']?> </td>
+                <td> <?php echo $row['apellido_paterno']?> </td>
+                <td> <?php echo $row['apellido_materno']?> </td>
+                <td> <?php echo $row['email']?> </td>
+                <td> <?php echo $row['telefono']?> </td>
+              </tr>
+              <?php } ?>
+          </tbody>
+        </table>
+
+    <div style="width: 500px;">
+        <a href="/"><button type="button" class="btn" style="background:#C0C0C0">Regresar</button></a>
+    </div>
+
+  </body>
+</html>
         width="400"
         height="341">
     </center>
